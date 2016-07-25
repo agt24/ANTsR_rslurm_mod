@@ -1,6 +1,10 @@
 library(ANTsR)
 library(rslurm)
 
+test_func <- function(thislist) {
+    print(thislist)
+}
+
 #set whatever paths you want
 path_to_dz <- "/spin1/users/zhoud4/ants_scripts/"
 path_to_cpb <- "/home/zhoud4/cpb/ants1/lhipp3_batch/"
@@ -48,3 +52,5 @@ for j in 1 2 3 {
       
     )
   }
+  
+  sjob <- slurm_apply(test_func, pars,jobname="AntsRegT", nodes = 1, cpus_per_node = 2)
